@@ -1,5 +1,7 @@
 ////////////////          start Add Questions        ///////////////////////////////
-
+//Get value from input
+let queston = document.getElementById("question");
+console.log(queston);
 
 
 
