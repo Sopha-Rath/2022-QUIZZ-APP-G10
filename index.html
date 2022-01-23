@@ -15,53 +15,65 @@
         <nav>
             <div class="conten">
                 <div class="log">
-                    <img src="image/logpnc.png" width="9%">
-                    <h2>App-Quiz-2022A</h2>
-                </div>
-                <div class="label">
-                    <label class="switch">
-                        <input id="dark" type="checkbox" checked>
-                        <span class="slider round"></span>
-                    </label>
+                    <img src="image/logpnc.png">
+                    <h1>Quiz Form</h1>
+                    <div class="group-btn">
+                        <button id="quiz-btn">QUIZ</button>
+                        <button id="edit">EDIT</button>
+                    </div>
                 </div>
             </div>
         </nav>
-        <div class="group-btn">
-            <button id="quiz">QUIZ</button>
-            <button id="create">CREATE</button>
-        </div>
+
     </div>
     <!-- ------------------end menu------------------------------------------ -->
-    <!-- //////////////// start Add Questions /////////////////////////////// -->
-    <div class="add_questions_container">
 
-        <div class="questions">
+    <div id="quizz">
+        <div class="quizz_title">
             <div class="form-group">
-                <input type="text" name="" id="question" class="form-control">
+                <input type="text" name="" id="" class="form-control title" placeholder="Quizz Title">
+            </div>
+            <div class="form-group">
+                <input type="text" name="" id="" class="form-control" placeholder="Form description">
+            </div>
+            <div class="form-group">
+                <input type="text" name="" id="" class="form-control" placeholder="SCORES 100/100">
             </div>
         </div>
-        <div class="answers">
-            <div class="form-group">
-                <input type="radio" name="answer" id="" class="radio_answer">
-                <input type="text" name="" id="" class="form-control" placeholder="Answer1">
+        <!-- //////////////// start Add Questions /////////////////////////////// -->
+        <div class="add_questions_container">
+            <div class="questions">
+                <div class="form-group">
+                    <input type="text" name="" id="question" class="form-control question" placeholder="Question">
+                </div>
             </div>
-            <div class="form-group">
-                <input type="radio" name="answer" id="" class="radio_answer">
-                <input type="text" name="" id="" class="form-control" placeholder="Answer2">
-            </div>
-            <div class="form-group">
-                <input type="radio" name="answer" id="" class="radio_answer">
-                <input type="text" name="" id="" class="form-control" placeholder="Answer3">
-            </div>
-            <div class="form-group">
-                <input type="radio" name="answer" id="" class="radio_answer">
-                <input type="text" name="" id="" class="form-control" placeholder="Answer4">
+            <div class="answers">
+                <div class="form-group">
+                    <input type="radio" name="answer" id="" class="radio_answer">
+                    <input type="text" name="" id="" class="form-control" placeholder="Answer1">
+                </div>
+                <div class="form-group">
+                    <input type="radio" name="answer" id="" class="radio_answer">
+                    <input type="text" name="" id="" class="form-control" placeholder="Answer2">
+                </div>
+                <div class="form-group">
+                    <input type="radio" name="answer" id="" class="radio_answer">
+                    <input type="text" name="" id="" class="form-control" placeholder="Answer3">
+                </div>
+                <div class="form-group">
+
+                    <input type="radio" name="answer" id="" class="radio_answer">
+                    <input type="text" name="" id="" class="form-control" placeholder="Answer4">
+                </div>
             </div>
         </div>
     </div>
-
-
-
+    <div id="add">
+        <button id="btn_add_question" class="btn"><a href="#save">+</a></button>
+    </div>
+    <div id="save">
+        <button id="btn_save_question" class="btn ">save</button>
+    </div>
 
 
 
