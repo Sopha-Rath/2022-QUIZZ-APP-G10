@@ -97,7 +97,7 @@ nav {
     margin-bottom: 2%;
 }
 
-.quizz_title .form-control {
+.quizz_title .form-control,.quizz_title .question {
     border-bottom: 1px dotted rgb(179, 176, 176);
 }
 
@@ -126,7 +126,7 @@ nav {
     margin: auto;
 }
 
-.form-control {
+.form-control ,.question{
     width: 100%;
     height: 6vh;
     box-sizing: border-box;
@@ -138,7 +138,7 @@ nav {
 }
 
 .form-control:focus,
-.questions .form-group .form-control:focus {
+.questions .form-group .question:focus {
     border-bottom: 2px solid rgb(22, 178, 230);
 }
 

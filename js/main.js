@@ -24,10 +24,12 @@ function add_question() {
     div_questions.appendChild(form_group);
 
     let input_question = document.createElement("INPUT");
+    input_question.className = "question"
     input_question.className = "form-control";
     input_question.placeholder = "Question";
     input_question.setAttribute("type", "text");
     input_question.setAttribute("id", "question");
+    input_question.className = "question"
     form_group.appendChild(input_question);
 
 
@@ -90,7 +92,6 @@ function display_question() {
             show_form_group_answer.className = "form-group";
             show_answers_container.appendChild(show_form_group_answer);
 
-
             let show_radio_answer = document.createElement("div");
             show_radio_answer.className = "new-radio-answer";
             show_form_group_answer.appendChild(show_radio_answer);
@@ -101,8 +102,6 @@ function display_question() {
             show_form_group_answer.appendChild(show_input_answer);
             console.log(show_new_answers[q][j + 1])
         }
-    
-
     } 
     let hide_questons=document.querySelectorAll(".add_questions_container");
         for(let hide of hide_questons){
@@ -119,7 +118,7 @@ function display_question() {
 
 function get_question() {
 
-    let add_questions = document.querySelectorAll("#question");
+    let add_questions = document.querySelectorAll(".question");
     let new_questions = [];
 
     for (let quest of add_questions) {
