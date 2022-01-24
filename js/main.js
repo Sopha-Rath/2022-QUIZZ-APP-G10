@@ -1,13 +1,7 @@
 ////////////////          start Add Questions        ///////////////////////////////
 //Get value from input
 
-let questions = {
-    questions1: { question: "what is your name?", answers: { answer1: "Vansao", isRightAnswer: true, answer2: "Sopha", isRightAnswer: false, answer1: "Thib", isRightAnswer: false, answer1: "Hang", isRightAnswer: false, } },
-    questions2: { question: "what is your name?", answers: { answer1: "Vansao", isRightAnswer: true, answer2: "Sopha", isRightAnswer: false, answer1: "Thib", isRightAnswer: false, answer1: "Hang", isRightAnswer: false, } },
-    questions3: { question: "what is your name?", answers: { answer1: "Vansao", isRightAnswer: true, answer2: "Sopha", isRightAnswer: false, answer1: "Thib", isRightAnswer: false, answer1: "Hang", isRightAnswer: false, } },
-    questions4: { question: "what is your name?", answers: { answer1: "Vansao", isRightAnswer: true, answer2: "Sopha", isRightAnswer: false, answer1: "Thib", isRightAnswer: false, answer1: "Hang", isRightAnswer: false, } }
 
-};
 let number_of_question = 0;
 
 function add_question() {
@@ -15,8 +9,10 @@ function add_question() {
 
     let quiz = document.getElementById("quizz")
 
+
     let add_questions_container = document.createElement("div");
     add_questions_container.className = "add_questions_container";
+    add_questions_container.setAttribute("id", "add_questions_container");
     quiz.appendChild(add_questions_container);
 
     let div_questions = document.createElement("div");
@@ -31,6 +27,7 @@ function add_question() {
     input_question.className = "form-control";
     input_question.placeholder = "Question";
     input_question.setAttribute("type", "text");
+    input_question.setAttribute("id", "question");
     form_group.appendChild(input_question);
 
 
@@ -38,37 +35,110 @@ function add_question() {
     answers_container.className = "answers";
     add_questions_container.appendChild(answers_container);
     for (let i = 0; i < 4; i++) {
-        let form_group_answer1 = document.createElement("div");
-        form_group_answer1.className = "form-group";
-        answers_container.appendChild(form_group_answer1);
+        let form_group_answer = document.createElement("div");
+        form_group_answer.className = "form-group";
+        answers_container.appendChild(form_group_answer);
 
 
-        let radio_answer1 = document.createElement("INPUT");
-        radio_answer1.className = "radio_answer";
-        radio_answer1.setAttribute("type", "radio");
-        radio_answer1.setAttribute("name", "answer" + number_of_question.toString());
-        form_group_answer1.appendChild(radio_answer1);
+        let radio_answer = document.createElement("INPUT");
+        radio_answer.className = "radio_answer";
+        radio_answer.setAttribute("type", "radio");
+        radio_answer.setAttribute("name", "answer" + number_of_question.toString());
+        form_group_answer.appendChild(radio_answer);
 
-        let input_answer1 = document.createElement("INPUT");
-        input_answer1.className = "form-control";
-        input_answer1.setAttribute("type", "text");
-        input_answer1.placeholder = "Answer1";
-        form_group_answer1.appendChild(input_answer1);
+        let input_answer = document.createElement("INPUT");
+        input_answer.className = "form-control";
+        input_answer.setAttribute("type", "text");
+        input_answer.placeholder = "Answer";
+        form_group_answer.appendChild(input_answer);
     }
 };
 
+
+
+function display_question() {
+    let show_new_question = get_question();
+    let show_new_answers = get_answers();
+  
+
+    for (let q = 0; q < show_new_question.length; q++) {
+        let quiz = document.getElementById("quizz")
+
+        let show_questions_container = document.createElement("div");
+        show_questions_container.className = "add_answers_container";
+        quiz.appendChild(show_questions_container);
+
+        let show_questions = document.createElement("div");
+        show_questions.className = "questions";
+        show_questions_container.appendChild(show_questions);
+
+        let show_form_group = document.createElement("div");
+        show_form_group.className = "form-group";
+        show_questions.appendChild(show_form_group);
+
+        let show_input_question = document.createElement("div");
+        show_input_question.className = "form-control";
+        show_input_question.textContent = show_new_question[q];
+        show_form_group.appendChild(show_input_question);
+
+
+        let show_answers_container = document.createElement("div");
+        show_answers_container.className = "answers";
+        show_questions_container.appendChild(show_answers_container);
+        for (let j = 0; j < 4; j++) {
+            let show_form_group_answer = document.createElement("div");
+            show_form_group_answer.className = "form-group";
+            show_answers_container.appendChild(show_form_group_answer);
+
+
+            let show_radio_answer = document.createElement("div");
+            show_radio_answer.className = "new-radio-answer";
+            show_form_group_answer.appendChild(show_radio_answer);
+
+            let show_input_answer = document.createElement("div");
+            show_input_answer.className = "form-control";
+            show_input_answer.textContent = show_new_answers[q][j + 1];
+            show_form_group_answer.appendChild(show_input_answer);
+            console.log(show_new_answers[q][j + 1])
+        }
+    
+
+    } 
+    let hide_questons=document.querySelectorAll(".add_questions_container");
+        for(let hide of hide_questons){
+            hide.style.display = "none";
+        }
+    document.getElementById("btn_add_question").style.display="none";
+    document.getElementById("btn_save_question").style.display="none";
+    console.log(get_question())
+    console.log(get_answers())
+    // document.getElementById("quizz_title").style.display="none";
+
+};
+
+
 function get_question() {
+
     let add_questions = document.querySelectorAll("#question");
+    let new_questions = [];
+
+    for (let quest of add_questions) {
+        new_questions.push(quest.value);
+    }
+
+    return new_questions
+}
+
+function get_answers() {
+
     let all_answers = document.getElementsByClassName("radio_answer")
 
-    let new_questions = [];
+
     let new_answers = [];
     let possible_answers = {};
     let number_of_answer = 1;
     let index_answer = 0;
-    for (let quest of add_questions) {
-        new_questions.push(quest.value);
-    }
+
     for (let answer of all_answers) {
 
         possible_answers[number_of_answer.toString()] = answer.nextElementSibling.value;
@@ -80,14 +150,36 @@ function get_question() {
             new_answers.push(possible_answers)
             possible_answers = {};
             number_of_answer = 0;
-            console.log(new_answers)
+
         }
         number_of_answer += 1
     }
-
+    // console.log(new_questions)
+    console.log(new_answers)
+    return new_answers
 }
+// display interface
+function setVisible(element, isVisible) {
+    if (isVisible) {
+        element.style.display = "block";
+    } else {
+        element.style.display = "none";
+    }
+}
+
+// function showForm() {
+//     setVisible(bookForm, true);
+//     setVisible(cardContainer, false);
+
+//     setVisible(btnAdd, false);
+//     setVisible(goodBookPanel, false);
+
+//     setVisible(btnClose, true);
+// }
+
+add_question()
 document.getElementById("btn_add_question").addEventListener("click", add_question)
-document.getElementById("btn_save_question").addEventListener("click", get_question)
+document.getElementById("btn_save_question").addEventListener("click", display_question)
 
 
 
