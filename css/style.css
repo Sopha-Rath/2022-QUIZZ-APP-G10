@@ -33,7 +33,7 @@ nav {
 }
 
 .log img {
-    width: 22%;
+    width: 19%;
 }
 
 .group-btn {
@@ -68,6 +68,7 @@ nav {
 .log h1 {
     font-weight: 700;
     font-size: 2rem;
+    color: rgb(105, 104, 104);
 }
 
 
@@ -82,7 +83,7 @@ nav {
 .quizz_title {
     width: 58%;
     margin: auto;
-    margin-top: 9%;
+    margin-top: 8%;
     border-top: 7px solid rgb(25, 177, 228);
     border-left: 7px solid rgb(68, 198, 241);
     border-radius: 10px;
@@ -100,7 +101,8 @@ nav {
     border-bottom: 1px dotted rgb(179, 176, 176);
 }
 
-.add_questions_container {
+.add_questions_container,
+.add_answers_container {
     width: 55%;
     margin: auto;
     margin-top: 3vh;
@@ -113,7 +115,8 @@ nav {
     border-left: 7px solid rgb(25, 177, 228);
 }
 
-.add_questions_container:last-child {
+.add_questions_container:last-child,
+.add_answers_container {
     margin-bottom: 3%;
 }
 
@@ -160,7 +163,6 @@ input[type='radio'] {
 .radio_answer {
     margin: 20px 16px 0 0;
 }
-
 .btn {
     padding: 10px 15px;
     font-size: 2rem;
@@ -194,6 +196,14 @@ input[type='radio'] {
 
 
 /* <!-- ////////////////////////////////////////// Start Display Question /////////////////////////////////////// --> */
+
+.new-radio-answer {
+    width: 16px;
+    height: 16px;
+    border: 1px solid black;
+    border-radius: 50%;
+    margin: 13px 16px 0 0;
+}
 
 
 /* <!-- // ------------------------------------- End of Display Question ------------------------------------> */
