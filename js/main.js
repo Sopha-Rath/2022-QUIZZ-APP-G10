@@ -57,7 +57,7 @@ function add_question() {
 
 function display_question() {
     let show_new_question = get_question();
-    let show_new_answers = get_answers();
+    let show_new_answers = get_answers("radio_answer");
   
 
     for (let q = 0; q < show_new_question.length; q++) {
@@ -123,9 +123,9 @@ function get_question() {
     return new_questions
 }
 
-function get_answers() {
+function get_answers(class_name) {
 
-    let all_answers = document.getElementsByClassName("radio_answer")
+    let all_answers = document.getElementsByClassName(class_name)
     let new_answers = [];
     let possible_answers = {};
     let number_of_answer = 1;
@@ -170,7 +170,7 @@ document.getElementById("btn_save_question").addEventListener("click", display_q
 
 function play_quiz() {
     let play_new_question = get_question();
-    let play_new_answers = get_answers();
+    let play_new_answers = get_answers("radio_answer");
   
 
     for (let l = 0; l < play_new_question.length; l++) {
@@ -202,7 +202,7 @@ function play_quiz() {
             play_answers_container.appendChild(play_form_group_answer);
 
             let play_radio_answer = document.createElement("INPUT");
-            play_radio_answer.className = "new-radio-answer";
+            play_radio_answer.className = "new_radio_answer";
             play_radio_answer.setAttribute("type", "radio");
             play_radio_answer.setAttribute("name", "answer"+ number_of_question.toString());
             play_form_group_answer.appendChild(play_radio_answer);
@@ -225,22 +225,32 @@ function play_quiz() {
 
 
 
-function showResults(get_answers) {
+function showResults() {
     let score = 0
-    for (let index in get_answers) {
-        if (index == get_answers[1]) {
-            score += 5
-        }else if (index == get_answers[2]) {
-            score += 5
-        }else if (index == get_answers[3]) {
-            score += 5
-        }else if (index == get_answers[4]) {
-            score += 5
-        }else {
-            score
+    // for (let index in get_answers) {
+    //     if (index == get_answers[1]) {
+    //         score += 5
+    //     }else if (index == get_answers[2]) {
+    //         score += 5
+    //     }else if (index == get_answers[3]) {
+    //         score += 5
+    //     }else if (index == get_answers[4]) {
+    //         score += 5
+    //     }else {
+    //         score
+    //     }
+    // }
+    // console.log(score)
+    let old_answer = get_answers("radio_answer");
+    let new_answer = get_answers("new_radio_answer")
+    for (obj in new_answer){
+        if (old_answer[obj]["correct"] ==new_answer[obj]["correct"]){
+            score += 10
         }
     }
     console.log(score)
+    document.getElementById("score").textContent = "score:" + score;
+    
 }
 //-------------------------- mains button----------------------------------
 document.getElementById("quiz-btn").addEventListener("click", play_quiz);
