@@ -102,7 +102,7 @@ nav {
 }
 
 .add_questions_container,
-.add_answers_container {
+.add_answers_container,.play_answers_container {
     width: 55%;
     margin: auto;
     margin-top: 3vh;
@@ -116,7 +116,7 @@ nav {
 }
 
 .add_questions_container:last-child,
-.add_answers_container {
+.add_answers_container:last-child, .play_answers_container:last-child{
     margin-bottom: 3%;
 }
 
