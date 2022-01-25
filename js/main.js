@@ -48,7 +48,7 @@ function add_question() {
         let input_answer = document.createElement("INPUT");
         input_answer.className = "form-control";
         input_answer.setAttribute("type", "text");
-        input_answer.placeholder = "Answer";
+        input_answer.placeholder = "answer";
         form_group_answer.appendChild(input_answer);
     }
 };
@@ -100,16 +100,14 @@ function display_question() {
             console.log(show_new_answers[q][j + 1])
         }
     } 
-    let hide_display=document.querySelectorAll(".add_questions_container");
-        for(let hideItem of hide_display){
-            hideItem.style.display = "none";
-        }
-    document.getElementById("btn_add_question").style.display="none";
-    document.getElementById("btn_save_question").style.display="none";
-    console.log(get_question())
-    console.log(get_answers())
-    // document.getElementById("quizz_title").style.display="none";
 
+    let hide_questons=document.querySelectorAll(".add_questions_container");
+        for(let hide of hide_questons){
+            show(hide,false)
+
+        }
+    show(document.getElementById("btn_add_question"),false)
+    show(document.getElementById("btn_save_question"),false)
 };
 
 
@@ -152,17 +150,16 @@ function get_answers() {
     console.log(new_answers)
     return new_answers
 }
-// display interface
-function setVisible(element, isVisible) {
-    if (isVisible) {
-        element.style.display = "block";
-    } else {
-        element.style.display = "none";
+function show(item,isValid){
+    if (isValid){
+        item.style.display = "block";
+    }else {
+        item.style.display = "none";
     }
 }
 
+add_question()
 
-// add_question()
 document.getElementById("btn_add_question").addEventListener("click", add_question)
 document.getElementById("btn_save_question").addEventListener("click", display_question)
 
