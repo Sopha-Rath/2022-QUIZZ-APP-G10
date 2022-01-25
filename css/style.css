@@ -197,7 +197,7 @@ input[type='radio'] {
 
 /* <!-- ////////////////////////////////////////// Start Display Question /////////////////////////////////////// --> */
 
-.new-radio-answer {
+.new_radio_answer,.new-radio-answer {
     width: 16px;
     height: 16px;
     border: 1px solid black;
