@@ -4,6 +4,7 @@
 
 let number_of_question = 0;
 function add_question() {
+    console.log(document.getElementById("question").value)
     number_of_question += 1
 
     let quiz = document.getElementById("quizz")
@@ -158,7 +159,7 @@ function show(item,isValid){
     }
 }
 
-add_question()
+// add_question()
 
 document.getElementById("btn_add_question").addEventListener("click", add_question)
 document.getElementById("btn_save_question").addEventListener("click", display_question)
