@@ -54,7 +54,7 @@ function add_question() {
 };
 
 
-
+let is_display_question = false;
 function display_question() {
     let show_new_question = get_question();
     let show_new_answers = get_answers("radio_answer");
@@ -108,6 +108,8 @@ function display_question() {
         }
     show(document.getElementById("btn_add_question"),false)
     show(document.getElementById("btn_save_question"),false)
+    is_display_question = true;
+    is_display_submit = true;
 };
 
 
@@ -169,12 +171,14 @@ document.getElementById("btn_save_question").addEventListener("click", display_q
 // -------------------------play Quiz--------------------------------
 
 function play_quiz() {
+   if (is_display_question === false) {
+       window.confirm("You need to save the question!")
+       window.style.color = "red";
+   }else { 
     let play_new_question = get_question();
     let play_new_answers = get_answers("radio_answer");
-  
-
     for (let l = 0; l < play_new_question.length; l++) {
-        number_of_question +=1
+        number_of_question += 1
         let play_questions_container = document.createElement("div");
         play_questions_container.className = "play_answers_container";
         document.getElementById("quizz").appendChild(play_questions_container);
@@ -219,38 +223,20 @@ function play_quiz() {
             hide.style.display = "none";
         }
     document.getElementById("btn_submit_question").style.display = "block";
+    }
 }
-
-
-
-
 
 function showResults() {
     let score = 0
-    // for (let index in get_answers) {
-    //     if (index == get_answers[1]) {
-    //         score += 5
-    //     }else if (index == get_answers[2]) {
-    //         score += 5
-    //     }else if (index == get_answers[3]) {
-    //         score += 5
-    //     }else if (index == get_answers[4]) {
-    //         score += 5
-    //     }else {
-    //         score
-    //     }
-    // }
-    // console.log(score)
     let old_answer = get_answers("radio_answer");
     let new_answer = get_answers("new_radio_answer")
     for (obj in new_answer){
         if (old_answer[obj]["correct"] ==new_answer[obj]["correct"]){
-            score += 10
+        score += 10
         }
     }
     console.log(score)
-    document.getElementById("score").textContent = "score:" + score;
-    
+    document.getElementById("score").textContent = "scores:" + score;
 }
 //-------------------------- mains button----------------------------------
 document.getElementById("quiz-btn").addEventListener("click", play_quiz);

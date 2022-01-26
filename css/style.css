@@ -45,7 +45,7 @@ nav {
 }
 
 #quiz-btn,
-#edit {
+#edit-btn {
     background: cornflowerblue;
     padding: 7px;
     width: 40%;
@@ -56,12 +56,12 @@ nav {
     color: #fff;
 }
 
-#edit {
+#edit-btn {
     margin-left: 25px;
 }
 
 #quiz-btn:hover,
-#edit:hover {
+#edit-btn:hover {
     background: darkblue;
 }
 
