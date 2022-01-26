@@ -30,29 +30,6 @@ function add_question() {
     input_question.className = "question"
     form_group.appendChild(input_question);
 
-
-        let add_questions_container = document.createElement("div");
-        add_questions_container.className = "add_questions_container";
-        add_questions_container.setAttribute("id", "add_questions_container");
-        quiz.appendChild(add_questions_container);
-    
-        let div_questions = document.createElement("div");
-        div_questions.className = "questions";
-        add_questions_container.appendChild(div_questions);
-    
-        let form_group = document.createElement("div");
-        form_group.className = "form-group";
-        div_questions.appendChild(form_group);
-    
-        let input_question = document.createElement("INPUT");
-        input_question.className = "form-control";
-        input_question.placeholder = "Question";
-        input_question.setAttribute("type", "text");
-        input_question.setAttribute("id", "question");
-        form_group.appendChild(input_question);
-    
-    
-    
         let answers_container = document.createElement("div");
         answers_container.className = "answers";
         add_questions_container.appendChild(answers_container);
@@ -79,7 +56,7 @@ function add_question() {
     }
 
 
-};
+;
 
 
 let is_display_question = false;
@@ -93,7 +70,6 @@ function display_answer_input(){
     }
     return false;
 }
-
 
 function display_question() {
 
