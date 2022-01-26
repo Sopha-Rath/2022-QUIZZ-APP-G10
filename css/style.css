@@ -33,7 +33,7 @@ nav {
 }
 
 .log img {
-    width: 22%;
+    width: 19%;
 }
 
 .group-btn {
@@ -45,7 +45,7 @@ nav {
 }
 
 #quiz-btn,
-#edit {
+#edit-btn {
     background: cornflowerblue;
     padding: 7px;
     width: 40%;
@@ -56,12 +56,12 @@ nav {
     color: #fff;
 }
 
-#edit {
+#edit-btn {
     margin-left: 25px;
 }
 
 #quiz-btn:hover,
-#edit:hover {
+#edit-btn:hover {
     background: darkblue;
 }
 
@@ -75,15 +75,13 @@ nav {
 /* -------------------------------end menu-------------------------------------- */
 
 
-/* <!-- //////////////// start Add Questions /////////////////////////////// --> */
-
 
 /* <!-- //////////////// start Add Questions /////////////////////////////// --> */
 
 .quizz_title {
     width: 58%;
     margin: auto;
-    margin-top: 9%;
+    margin-top: 8%;
     border-top: 7px solid rgb(25, 177, 228);
     border-left: 7px solid rgb(68, 198, 241);
     border-radius: 10px;
