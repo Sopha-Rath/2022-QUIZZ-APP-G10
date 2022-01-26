@@ -91,7 +91,7 @@ function display_question() {
         window.confirm('You must fill all inputs')
     }else{
         let show_new_question = get_question();
-        let show_new_answers = get_answers();
+        let show_new_answers = get_answers('radio_answer');
       
         for (let q = 0; q < show_new_question.length; q++) {
             let quiz = document.getElementById("quizz")
@@ -142,25 +142,21 @@ function display_question() {
             console.log(get_question())
             console.log(get_answers())
     
-    } 
-
-
-    let hide_questons=document.querySelectorAll(".add_questions_container");
+        } 
+    
+        let hide_questons=document.querySelectorAll(".add_questions_container");
         for(let hide of hide_questons){
             show(hide,false)
-
         }
-    show(document.getElementById("btn_add_question"),false)
-    show(document.getElementById("btn_save_question"),false)
-    is_display_question = true;
-    is_display_submit = true;
+        show(document.getElementById("btn_add_question"),false)
+        show(document.getElementById("btn_save_question"),false)
+        is_display_question = true;
+        is_display_submit = true;
+    }
 };
 
 
 function get_question() {
-
-
-  
 
     let add_questions = document.querySelectorAll(".question");
 
@@ -173,14 +169,6 @@ function get_question() {
     return new_questions
 }
 
-function get_answers() {
-
-    let all_answers = document.getElementsByClassName("radio_answer");
-
-
-
-    return new_questions
-}
 
 function get_answers(class_name) {
 

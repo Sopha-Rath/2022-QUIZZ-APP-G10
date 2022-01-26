@@ -100,11 +100,7 @@ nav {
 }
 
 .add_questions_container,
-<<<<<<< HEAD
-.add_answers_container {
-=======
 .add_answers_container,.play_answers_container {
->>>>>>> 749496ffccdf62510dc6e3eed46638a17fe5101f
     width: 55%;
     margin: auto;
     margin-top: 3vh;
@@ -118,11 +114,7 @@ nav {
 }
 
 .add_questions_container:last-child,
-<<<<<<< HEAD
-.add_answers_container {
-=======
 .add_answers_container:last-child, .play_answers_container:last-child{
->>>>>>> 749496ffccdf62510dc6e3eed46638a17fe5101f
     margin-bottom: 3%;
 }
 
@@ -203,11 +195,7 @@ input[type='radio'] {
 
 /* <!-- ////////////////////////////////////////// Start Display Question /////////////////////////////////////// --> */
 
-<<<<<<< HEAD
-.new-radio-answer {
-=======
 .new_radio_answer,.new-radio-answer {
->>>>>>> 749496ffccdf62510dc6e3eed46638a17fe5101f
     width: 16px;
     height: 16px;
     border: 1px solid black;
