@@ -3,7 +3,6 @@
 
 
 let number_of_question = 0;
-
 function add_question() {
     let first_add = false;
     let question_input=document.getElementById('question').value;
@@ -17,6 +16,7 @@ function add_question() {
         
         let quiz = document.getElementById("quizz");
         
+
 
         let add_questions_container = document.createElement("div");
         add_questions_container.className = "add_questions_container";
@@ -62,10 +62,12 @@ function add_question() {
             input_answer.placeholder = "Answer";
             form_group_answer.appendChild(input_answer);
         }
+
     }
 
 
 };
+
 
 // -----------------------alert -----------------------------
 let answer_input=document.getElementsByClassName('form-control');
@@ -150,18 +152,32 @@ function display_question() {
 
 function get_question() {
 
-    let add_questions = document.querySelectorAll("#question");
+
+  
+
+    let add_questions = document.querySelectorAll(".question");
+
     let new_questions = [];
 
     for (let quest of add_questions) {
         new_questions.push(quest.value);
     }
+
     return new_questions
 }
 
 function get_answers() {
 
     let all_answers = document.getElementsByClassName("radio_answer");
+
+
+
+    return new_questions
+}
+
+function get_answers(class_name) {
+
+    let all_answers = document.getElementsByClassName(class_name)
 
     let new_answers = [];
     let possible_answers = {};
@@ -188,7 +204,19 @@ function get_answers() {
     return new_answers
 }
 
+
 // add_question()
+
+function show(item,isValid){
+    if (isValid){
+        item.style.display = "block";
+    }else {
+        item.style.display = "none";
+    }
+}
+
+add_question()
+
 document.getElementById("btn_add_question").addEventListener("click", add_question)
 document.getElementById("btn_save_question").addEventListener("click", display_question)
 
@@ -196,9 +224,96 @@ document.getElementById("btn_save_question").addEventListener("click", display_q
 
 
 
+// -------------------------play Quiz--------------------------------
+
+function play_quiz() {
+    let play_new_question = get_question();
+    let play_new_answers = get_answers("radio_answer");
+  
+
+    for (let l = 0; l < play_new_question.length; l++) {
+        number_of_question +=1
+        let play_questions_container = document.createElement("div");
+        play_questions_container.className = "play_answers_container";
+        document.getElementById("quizz").appendChild(play_questions_container);
+
+        let play_questions = document.createElement("div");
+        play_questions.className = "questions";
+        play_questions_container.appendChild(play_questions);
+
+        let play_form_group = document.createElement("div");
+        play_form_group.className = "form-group";
+        play_questions.appendChild(play_form_group);
+
+        let play_input_question = document.createElement("div");
+        play_input_question.className = "form-control";
+        play_input_question.textContent = play_new_question[l];
+        play_form_group.appendChild(play_input_question);
+
+
+        let play_answers_container = document.createElement("div");
+        play_answers_container.className = "answers";
+        play_questions_container.appendChild(play_answers_container);
+        for (let k = 0; k < 4; k++) {
+            let play_form_group_answer = document.createElement("div");
+            play_form_group_answer.className = "form-group";
+            play_answers_container.appendChild(play_form_group_answer);
+
+            let play_radio_answer = document.createElement("INPUT");
+            play_radio_answer.className = "new_radio_answer";
+            play_radio_answer.setAttribute("type", "radio");
+            play_radio_answer.setAttribute("name", "answer"+ number_of_question.toString());
+            play_form_group_answer.appendChild(play_radio_answer);
+
+            let play_input_answer = document.createElement("div");
+            play_input_answer.className = "form-control";
+            play_input_answer.textContent = play_new_answers[l][k + 1];
+            play_form_group_answer.appendChild(play_input_answer);
+            console.log(play_new_answers[l][k + 1])
+        }
+    } 
+    let hide_questons=document.querySelectorAll(".add_answers_container");
+        for(let hide of hide_questons){
+            hide.style.display = "none";
+        }
+    document.getElementById("btn_submit_question").style.display = "block";
+}
 
 
 
+
+
+function showResults() {
+    let score = 0
+    // for (let index in get_answers) {
+    //     if (index == get_answers[1]) {
+    //         score += 5
+    //     }else if (index == get_answers[2]) {
+    //         score += 5
+    //     }else if (index == get_answers[3]) {
+    //         score += 5
+    //     }else if (index == get_answers[4]) {
+    //         score += 5
+    //     }else {
+    //         score
+    //     }
+    // }
+    // console.log(score)
+    let old_answer = get_answers("radio_answer");
+    let new_answer = get_answers("new_radio_answer")
+    for (obj in new_answer){
+        if (old_answer[obj]["correct"] ==new_answer[obj]["correct"]){
+            score += 10
+        }
+    }
+    console.log(score)
+    document.getElementById("score").textContent = "score:" + score;
+    
+}
+//-------------------------- mains button----------------------------------
+document.getElementById("quiz-btn").addEventListener("click", play_quiz);
+document.getElementById("btn_submit_question").style.display = "none";
+document.getElementById("btn_submit_question").addEventListener("click", showResults)
 
 
 

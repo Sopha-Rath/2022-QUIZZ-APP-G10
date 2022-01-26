@@ -95,12 +95,16 @@ nav {
     margin-bottom: 2%;
 }
 
-.quizz_title .form-control {
+.quizz_title .form-control,.quizz_title .question {
     border-bottom: 1px dotted rgb(179, 176, 176);
 }
 
 .add_questions_container,
+<<<<<<< HEAD
 .add_answers_container {
+=======
+.add_answers_container,.play_answers_container {
+>>>>>>> 749496ffccdf62510dc6e3eed46638a17fe5101f
     width: 55%;
     margin: auto;
     margin-top: 3vh;
@@ -114,7 +118,11 @@ nav {
 }
 
 .add_questions_container:last-child,
+<<<<<<< HEAD
 .add_answers_container {
+=======
+.add_answers_container:last-child, .play_answers_container:last-child{
+>>>>>>> 749496ffccdf62510dc6e3eed46638a17fe5101f
     margin-bottom: 3%;
 }
 
@@ -124,7 +132,7 @@ nav {
     margin: auto;
 }
 
-.form-control {
+.form-control ,.question{
     width: 100%;
     height: 6vh;
     box-sizing: border-box;
@@ -136,7 +144,7 @@ nav {
 }
 
 .form-control:focus,
-.questions .form-group .form-control:focus {
+.questions .form-group .question:focus {
     border-bottom: 2px solid rgb(22, 178, 230);
 }
 
@@ -195,7 +203,11 @@ input[type='radio'] {
 
 /* <!-- ////////////////////////////////////////// Start Display Question /////////////////////////////////////// --> */
 
+<<<<<<< HEAD
 .new-radio-answer {
+=======
+.new_radio_answer,.new-radio-answer {
+>>>>>>> 749496ffccdf62510dc6e3eed46638a17fe5101f
     width: 16px;
     height: 16px;
     border: 1px solid black;
