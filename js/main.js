@@ -4,80 +4,114 @@
 
 let number_of_question = 0;
 function add_question() {
-    console.log(document.getElementById("question").value)
-    number_of_question += 1
 
-    let quiz = document.getElementById("quizz")
-    let add_questions_container = document.createElement("div");
-    add_questions_container.className = "add_questions_container";
-    add_questions_container.setAttribute("id", "add_questions_container");
-    quiz.appendChild(add_questions_container);
-
-    let div_questions = document.createElement("div");
-    div_questions.className = "questions";
-    add_questions_container.appendChild(div_questions);
-
-    let form_group = document.createElement("div");
-    form_group.className = "form-group";
-    div_questions.appendChild(form_group);
-
-    let input_question = document.createElement("INPUT");
-    input_question.className = "question"
-    input_question.className = "form-control";
-    input_question.placeholder = "Question";
-    input_question.setAttribute("type", "text");
-    input_question.setAttribute("id", "question");
-    input_question.className = "question"
-    form_group.appendChild(input_question);
-
-        let answers_container = document.createElement("div");
-        answers_container.className = "answers";
-        add_questions_container.appendChild(answers_container);
+    let first_add=false;
+    let question_input=document.getElementById('question').value;
+    let form_description =document.getElementById('Form description').value;
+    if (first_add == true && question_input==='' || form_description==='' || display_answer_input()) {
+         window.confirm('You must fill all inputs') 
+    }else if (!(check_correct_answer())){
+        window.confirm('you need to check correct answer')
+    }else{
+        first_add=true;
+        // console.log(document.getElementById("question").value)
+        number_of_question += 1
     
-        for (let i = 0; i < 4; i++) {
-            let form_group_answer = document.createElement("div");
-            form_group_answer.className = "form-group";
-            answers_container.appendChild(form_group_answer);
+        let quiz = document.getElementById("quizz")
+        let add_questions_container = document.createElement("div");
+        add_questions_container.className = "add_questions_container";
+        add_questions_container.setAttribute("id", "add_questions_container");
+        quiz.appendChild(add_questions_container);
     
+        let div_questions = document.createElement("div");
+        div_questions.className = "questions";
+        add_questions_container.appendChild(div_questions);
     
-            let radio_answer = document.createElement("INPUT");
-            radio_answer.className = "radio_answer";
-            radio_answer.setAttribute("type", "radio");
-            radio_answer.setAttribute("name", "answer" + number_of_question.toString());
-            form_group_answer.appendChild(radio_answer);
+        let form_group = document.createElement("div");
+        form_group.className = "form-group";
+        div_questions.appendChild(form_group);
     
-            let input_answer = document.createElement("INPUT");
-            input_answer.className = "form-control";
-            input_answer.setAttribute("type", "text");
-            input_answer.placeholder = "Answer";
-            form_group_answer.appendChild(input_answer);
-        }
-
+        let input_question = document.createElement("INPUT");
+        input_question.className = "question"
+        input_question.className = "form-control";
+        input_question.placeholder = "Question";
+        input_question.setAttribute("type", "text");
+        input_question.setAttribute("id", "question");
+        input_question.className = "question"
+        form_group.appendChild(input_question);
+    
+            let answers_container = document.createElement("div");
+            answers_container.className = "answers";
+            add_questions_container.appendChild(answers_container);
+        
+            for (let i = 0; i < 4; i++) {
+                let form_group_answer = document.createElement("div");
+                form_group_answer.className = "form-group";
+                answers_container.appendChild(form_group_answer);
+        
+        
+                let radio_answer = document.createElement("INPUT");
+                radio_answer.className = "radio_answer";
+                radio_answer.setAttribute("type", "radio");
+                radio_answer.setAttribute("name", "answer" + number_of_question.toString());
+                form_group_answer.appendChild(radio_answer);
+        
+                let input_answer = document.createElement("INPUT");
+                input_answer.className = "form-control";
+                input_answer.setAttribute("type", "text");
+                input_answer.placeholder = "Answer";
+                form_group_answer.appendChild(input_answer);
+            }
     }
 
+    
 
-;
+
+};
 
 
 let is_display_question = false;
 // -----------------------alert -----------------------------
 let answer_input=document.getElementsByClassName('form-control');
 function display_answer_input(){
-    for (let v of answer_input){
-        if (v.value===''){
+    for (let answer of answer_input){
+        if (answer.value===''){
             return true;
         }
     }
     return false;
 }
 
+
+let radio=document.getElementsByClassName('radio_answer');
+function check_correct_answer(){
+    let checked_number = 0;
+    let is_check = false;
+    let num_0f_q = get_question().length;
+    for (let r of radio){
+        if (r.checked){
+             checked_number += 1;
+             console.log(checked_number)
+        }
+    }
+    if (checked_number === num_0f_q){
+        is_check = true;
+    } 
+    console.log(checked_number)
+    return is_check;
+}
 function display_question() {
+    
 
     let question_input=document.getElementById('question').value;
     let Quizz_Title=document.getElementById('Quizz_Title').value;
-    let form_description =document.getElementById('Form description').value;
+    let form_description =document.getElementsByClassName('Form description').value;
+
     if (question_input==='' || Quizz_Title==='' || form_description==='' || display_answer_input() ) {
         window.confirm('You must fill all inputs')
+    }else if (!(check_correct_answer())){
+        window.confirm('you need to check correct answer')
+    
     }else{
         let show_new_question = get_question();
         let show_new_answers = get_answers('radio_answer');
@@ -120,7 +154,7 @@ function display_question() {
                 show_input_answer.className = "form-control";
                 show_input_answer.textContent = show_new_answers[q][j + 1];
                 show_form_group_answer.appendChild(show_input_answer);
-                console.log(show_new_answers[q][j + 1])
+           
             }
             let hide_questons=document.querySelectorAll(".add_questions_container");
             for(let hide of hide_questons){
@@ -128,8 +162,7 @@ function display_question() {
             }
             document.getElementById("btn_add_question").style.display="none";
             document.getElementById("btn_save_question").style.display="none";
-            console.log(get_question())
-            console.log(get_answers())
+            
     
         } 
     
@@ -184,7 +217,7 @@ function get_answers(class_name) {
         number_of_answer += 1
     }
     // console.log(new_questions)
-    console.log(new_answers)
+ 
     return new_answers
 }
 
@@ -203,9 +236,6 @@ function show(item,isValid){
 
 document.getElementById("btn_add_question").addEventListener("click", add_question)
 document.getElementById("btn_save_question").addEventListener("click", display_question)
-
-
-
 
 
 // -------------------------play Quiz--------------------------------
@@ -255,7 +285,7 @@ function play_quiz() {
             play_input_answer.className = "form-control";
             play_input_answer.textContent = play_new_answers[l][k + 1];
             play_form_group_answer.appendChild(play_input_answer);
-            console.log(play_new_answers[l][k + 1])
+            
         }
     } 
     let hide_questons=document.querySelectorAll(".add_answers_container");
@@ -275,7 +305,7 @@ function showResults() {
         score += 10
         }
     }
-    console.log(score)
+  
     document.getElementById("score").textContent = "scores:" + score;
 }
 //-------------------------- mains button----------------------------------
