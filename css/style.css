@@ -33,7 +33,7 @@ nav {
 }
 
 .log img {
-    width: 19%;
+    width: 23%;
 }
 
 .group-btn {
@@ -47,6 +47,7 @@ nav {
 #quiz-btn,
 #edit-btn {
     background: cornflowerblue;
+    cursor: pointer;
     padding: 7px;
     width: 40%;
     height: 7vh;
@@ -61,7 +62,7 @@ nav {
 }
 
 #quiz-btn:hover,
-#edit-btn:hover {
+#edit-btn:hover, .btn:hover {
     background: darkblue;
 }
 
@@ -81,7 +82,7 @@ nav {
 .quizz_title {
     width: 58%;
     margin: auto;
-    margin-top: 8%;
+    margin-top: 10%;
     border-top: 7px solid rgb(25, 177, 228);
     border-left: 7px solid rgb(68, 198, 241);
     border-radius: 10px;
@@ -167,33 +168,28 @@ input[type='radio'] {
     outline: none;
     border: 0;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background: lightblue;
+    background: cornflowerblue;
     border-radius: 3px;
-    color: rgba(85, 26, 139, 1);
     margin-left: 72%;
     margin-bottom: 5%;
-    /* float: right; */
+}
+.submit {
+    margin-right: 40px;
 }
 
 .btn a {
     text-decoration: none;
+    color: #fff;
 }
 
 #btn_add_question {
     border-radius: 50%;
-    /* right: 70px; */
     position: fixed;
     right: 140px;
     bottom: 35%;
     padding: 10px 25px;
     font-size: 3rem;
 }
-
-
-/* <!-- //---------------------------------------------- End add Question -----------------------------> */
-
-
-/* <!-- ////////////////////////////////////////// Start Display Question /////////////////////////////////////// --> */
 
 .new_radio_answer,.new-radio-answer {
     width: 16px;
@@ -203,11 +199,3 @@ input[type='radio'] {
     margin: 13px 16px 0 0;
 }
 
-
-/* <!-- // ------------------------------------- End of Display Question ------------------------------------> */
-
-
-/* <!-- ------------------------------------ Start plying quiz ----------------------------------------- --> */
-
-
-/* <!-- ------------------------------------ Start plying quiz ----------------------------------------- --> */
