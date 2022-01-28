@@ -107,7 +107,7 @@ function display_question() {
             let quiz = document.getElementById("quizz")
         
             let show_questions_container = document.createElement("div");
-            show_questions_container.className = "add_answers_container";
+            show_questions_container.className = "show_question_container";
             quiz.appendChild(show_questions_container);
         
             let show_questions = document.createElement("div");
@@ -134,7 +134,8 @@ function display_question() {
                 let show_radio_answer = document.createElement("div");
                 show_radio_answer.className = "new-radio-answer";
                 show_form_group_answer.appendChild(show_radio_answer);
-        
+
+
                 let show_input_answer = document.createElement("div");
                 show_input_answer.className = "form-control";
                 show_input_answer.textContent = show_new_answers[q][j + 1];
@@ -260,7 +261,7 @@ function play_quiz() {
                 
             }
         } 
-        let hide_questons=document.querySelectorAll(".add_answers_container");
+        let hide_questons=document.querySelectorAll(".show_question_container");
             for(let hide of hide_questons){
                 hide.style.display = "none";
             }
@@ -269,10 +270,12 @@ function play_quiz() {
 }
 
 // =============================show the result==================================================
+
 function show_result() {
     let score = 0
     let old_answer = get_answers("radio_answer");
     let new_answer = get_answers("new_radio_answer")
+    
     let max_scores = new_answer.length*10;
     for (obj in new_answer){
         if (old_answer[obj]["correct"] === new_answer[obj]["correct"] && new_answer[obj]["correct"]!=0){
@@ -284,6 +287,41 @@ function show_result() {
     show_scores.textContent = "Total scores: " + score + " / " + max_scores;
     show_scores.style.fontSize = "20px"
     document.getElementById("btn_submit_question").style.display = "none";
+    let play_answers = document.getElementsByClassName("play_answers_container");
+    for (play of play_answers){
+        play.style.display = "none";
+    }
+    let show_questions=document.querySelectorAll(".show_question_container");
+    for(let  show of show_questions){
+        show.style.display = "block";
+    }
+    let play_radio = document.getElementsByClassName("new_radio_answer");
+    let old_radio = document.getElementsByClassName("radio_answer");
+    
+    let all_new_radio = document.getElementsByClassName("new-radio-answer");
+    for (let n in all_new_radio){
+        if (play_radio[n].checked){
+            
+            if (old_radio[n].checked){
+                all_new_radio[n].style.backgroundImage = "url('image/images.png')";
+                all_new_radio[n].style.border = "none";
+
+            } else {
+                all_new_radio[n].style.backgroundImage = "url('image/wrong.png')"
+                all_new_radio[n].style.border = "none";
+
+                
+            }
+        }
+        if (old_radio[n].checked){
+            all_new_radio[n].style.backgroundImage = "url('image/images.png')";
+            all_new_radio[n].style.border = "none";
+
+
+            // all_new_radio[n].style.display = "none";
+        };
+            
+    }
 }
 //==================================== mains button=================================================
 document.getElementById("quiz-btn").addEventListener("click", play_quiz);
