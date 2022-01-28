@@ -1,12 +1,20 @@
-
-// ==============================function  to add question==================================
+// =========================================show_menu========================================
+function show_menus() { 
+    document.getElementById("header").style.display = "none";
+    document.getElementById("img").style.display = "none";
+    document.getElementById("btn_create").style.display = "none";
+    document.getElementById("quizz").style.display = "block";
+    document.getElementById("btn_save_question").style.display = "block";
+    document.getElementById("btn_add_question").style.display = "block";
+}
+//======================================function to add question===========================================
 let number_of_question = 0;
 function add_question() {
     let first_add=false;
     let question_input=document.getElementById('question').value;
     let form_description =document.getElementById('Form description').value;
     let alert = document.querySelector('.alert')
-    if (first_add == true && question_input==='' || form_description==='' || display_answer_input()) {
+    if (first_add == true && question_input=== "" || form_description=== ""|| display_answer_input()) {
         alert.style.display = "flex"
     }else if (!(check_correct_answer())){
         alert.style.display = "flex"
@@ -60,7 +68,7 @@ function add_question() {
         }
     }
 };
-// =========================================validation input==================================
+// =========================================validation input======================================
 let is_display_question = false;
 let answer_input=document.getElementsByClassName('form-control');
 function display_answer_input(){
@@ -88,7 +96,7 @@ function check_correct_answer(){
     console.log(checked_number)
     return is_check;
 }
-// =============================function to display question=====================================
+//========================================display question==================================================
 function display_question() {
     let question_input=document.getElementById('question').value;
     let Quizz_Title=document.getElementById('Quizz_Title').value;
@@ -103,6 +111,7 @@ function display_question() {
         let show_new_question = get_question();
         let show_new_answers = get_answers('radio_answer');
         alert.style.display = "none"
+      
         for (let q = 0; q < show_new_question.length; q++) {
             let quiz = document.getElementById("quizz")
         
@@ -165,7 +174,7 @@ let closeAlert = () =>{
     alert.style.display = "none"
 }
 close.addEventListener('click', closeAlert)
-// ==========================================function get the question===========================
+// ==========================================get the question============================
 function get_question() {
     let add_questions = document.querySelectorAll(".question");
     let new_questions = [];
@@ -174,7 +183,7 @@ function get_question() {
     }
     return new_questions
 }
-// ===============================================get the answer===========================
+// ===========================================get the answers====================================
 function get_answers(class_name) {
     let all_answers = document.getElementsByClassName(class_name)
     let new_answers = [];
@@ -197,7 +206,7 @@ function get_answers(class_name) {
     }
     return new_answers
 }
-//===============================================show and hide==========================
+// -=====================================show and hide=======================================
 function show(item,isValid){
     if (isValid){
         item.style.display = "block";
@@ -205,10 +214,9 @@ function show(item,isValid){
         item.style.display = "none";
     }
 }
-// -------------------------main_btn---------------------------------
-document.getElementById("btn_add_question").addEventListener("click", add_question)
-document.getElementById("btn_save_question").addEventListener("click", display_question)
-// ====================================play Quiz=========================================
+
+
+//=============================================play Quiz====================================
 let is_click = false;
 function play_quiz() {
     let alert = document.querySelector('.alert')
@@ -258,7 +266,6 @@ function play_quiz() {
                 play_input_answer.className = "form-control";
                 play_input_answer.textContent = play_new_answers[l][k + 1];
                 play_form_group_answer.appendChild(play_input_answer);
-                
             }
         } 
         let hide_questons=document.querySelectorAll(".show_question_container");
@@ -268,11 +275,10 @@ function play_quiz() {
         document.getElementById("btn_submit_question").style.display = "block";
     }
 }
-
-// =============================show the result==================================================
-
+// =========================================Show the result====================================
 function show_result() {
     let score = 0
+    
     let old_answer = get_answers("radio_answer");
     let new_answer = get_answers("new_radio_answer")
     
@@ -323,14 +329,17 @@ function show_result() {
             
     }
 }
-//==================================== mains button=================================================
+//============================================= mains button====================================
 document.getElementById("quiz-btn").addEventListener("click", play_quiz);
-document.getElementById("btn_submit_question").style.display = "none";
-document.querySelector('.alert').style.display = "none";
+document.getElementById("btn_create").addEventListener("click", show_menus)
 document.getElementById("btn_submit_question").addEventListener("click", show_result)
-
-
-
+document.getElementById("btn_add_question").addEventListener("click", add_question)
+document.getElementById("btn_save_question").addEventListener("click", display_question)
+// =============================================hide buttion=======================================
+document.getElementById("btn_submit_question").style.display = "none";
+document.getElementById("btn_save_question").style.display = "none";
+document.getElementById("btn_add_question").style.display = "none";
+document.querySelector('.alert').style.display = "none";
 
 
 

@@ -10,25 +10,39 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
-    <!-- -----------------start menu----------------------------------------- -->
-    <div class="menu" id="menu">
-        <nav>
-            <div class="conten">
-                <div class="log">
-                    <img src="image/logpnc.png">
-                    <h1>Quiz Form</h1>
-                    <div class="group-btn">
-                        <button id="quiz-btn">QUIZ</button>
-                        <button id="edit-btn">EDIT</button>
-                    </div>
+<body id="body">
+   <!-- -----------------start menu----------------------------------------- -->
+   <div class="menu" id="menu">
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <img src="image/logpnc.png">
+                <h1>2022-QUIZZ-APP-G10</h1>
+                <div class="group-btn">
+                    <button id="quiz-btn">QUIZ</button>
+                    <button id="edit-btn">EDIT</button>
                 </div>
             </div>
-        </nav>
-
+        </div>
+    </nav>
     </div>
-    <!-- ------------------end menu------------------------------------------ -->
-
+<!-- ------------------create_menu--------------------------------------- -->
+    <div class="bg-img">
+        <div class="header">
+            <h1 id="header">Welcome to our QUIZ-APP</h1>
+        </div>
+        <div class="img">
+            <img id="img" src="image/message.png" alt="">
+        </div>
+        <div class="create"> 
+            <button id="btn_create" class="button-82-pushable" role="button">
+                <span class="button-82-shadow"></span>
+                <span class="button-82-edge"></span>
+                <span class="button-82-front text">CREATE</span>
+            </button>
+        </div>
+    </div>
+<!-- ------------------end menu------------------------------------------ -->
     <div id="quizz">
         <div class="quizz_title" id="quizz_title">
             <div class="form-group">
@@ -39,7 +53,7 @@
                 <input type="text" name="" id="Form description"  class="form-control" placeholder="Form description">
             </div>
             <div class="form-group">
-                <span id="score" class="form-control">scores:</span>
+                <span id="score" class="form-control"></span>
             </div>
         </div>
         <div class="alert">
@@ -66,7 +80,6 @@
                     <input type="text" name="" id="" class="form-control" placeholder="Answer3">
                 </div>
                 <div class="form-group">
-
                     <input type="radio" name="answer" id="" class="radio_answer">
                     <input type="text" name="" id="" class="form-control" placeholder="Answer4">
                 </div>
@@ -105,7 +118,7 @@
         <button id="btn_save_question" class="btn "><a href="#quizz">save</a></button>
     </div>
     <div class="submit">
-        <button id="btn_submit_question" class="btn"><a href="#submit">submit</a></button>
+        <button id="btn_submit_question" class="btn"><a href="#quizz">submit</a></button>
     </div>
 
 
