@@ -1,14 +1,145 @@
 /* -------------------------------start menu-------------------------------------- */
-
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     margin: 0;
     padding: 0;
     background-color: #EFEBF9;
     font-family: sans-serif;
+}
+/* ---------------------------------create_menu------------------------------------ */
+.header h1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 23vh;
+    color: #000;
+    font-weight: bold;
+    font-size: 45px;
+    font-family: cursive;
+    text-shadow: 2px 2px grey;
+}
+.img {
+    display: flex;
+    justify-content: center;
+    margin-top: 45px;
+
+}
+.img img {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.create {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+}
+.button-82-pushable {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+    transition: filter 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-82-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: rgba(87, 79, 79, 0.25);
+  will-change: transform;
+  transform: translateY(2px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
+
+.button-82-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background: linear-gradient(
+    to left,
+    rgb(27, 71, 151) 0%,
+    rgb(27, 71, 151) 8%,
+    rgb(27, 71, 151) 92%,
+    rgb(27, 71, 151) 100%
+  );
+}
+
+.button-82-front {
+  display: block;
+  position: relative;
+  padding: 12px 27px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  color: #fff;
+  background: rgb(22, 98, 238);
+  will-change: transform;
+  transform: translateY(-4px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
+
+@media (min-width: 768px) {
+  .button-82-front {
+    font-size: 1.25rem;
+    padding: 12px 42px;
+  }
+}
+
+.button-82-pushable:hover {
+  filter: brightness(110%);
+}
+
+.button-82-pushable:hover .button-82-front {
+  transform: translateY(-6px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.5, .10, .4, 1.5);
+    background: darkblue;
+
+}
+
+.button-82-pushable:active .button-82-front {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+}
+
+.button-82-pushable:hover .button-82-shadow {
+    transform: translateY(4px);
+    transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-82-pushable:active .button-82-shadow {
+    transform: translateY(1px);
+    transition: transform 34ms;
+}
+
+.button-82-pushable:focus:not(:focus-visible) {
+    outline: none;
+}
+/* ---------------------------------end_menu------------------------------------ */
+html {
+    scroll-behavior: smooth;
 }
 
 nav {
@@ -18,24 +149,23 @@ nav {
     top: 0;
 }
 
-.conten {
+.container {
     position: relative;
     width: 100%;
     background: #fff;
     box-shadow: 1px 0.9px 5px 1px rgb(185, 170, 170);
 }
 
-.log {
+.logo {
     display: flex;
     justify-content: space-between;
-    margin-left: 5px;
-    padding: 0 10% 0 10%;
+    padding: 2px;
+    margin-left: 23px;
 }
 
-.log img {
-    width: 19%;
+.logo img {
+    width: 18%;
 }
-
 .group-btn {
     display: flex;
     width: 30%;
@@ -46,9 +176,10 @@ nav {
 
 #quiz-btn,
 #edit-btn {
-    background: cornflowerblue;
+    background: rgb(22, 98, 238);
+    cursor: pointer;
     padding: 7px;
-    width: 40%;
+    width: 35%;
     height: 7vh;
     border-radius: 5px;
     border: none;
@@ -61,14 +192,16 @@ nav {
 }
 
 #quiz-btn:hover,
-#edit-btn:hover {
+#edit-btn:hover, .btn:hover {
     background: darkblue;
 }
 
-.log h1 {
+.logo h1 {
+    align-items: center;
     font-weight: 700;
     font-size: 2rem;
     color: rgb(105, 104, 104);
+    margin-left: 100px;
 }
 
 
@@ -77,11 +210,13 @@ nav {
 
 
 /* <!-- //////////////// start Add Questions /////////////////////////////// --> */
-
+#quizz {
+    display: none;
+}
 .quizz_title {
     width: 58%;
     margin: auto;
-    margin-top: 8%;
+    margin-top: 70px;
     border-top: 7px solid rgb(25, 177, 228);
     border-left: 7px solid rgb(68, 198, 241);
     border-radius: 10px;
@@ -106,11 +241,12 @@ nav {
     margin-top: 3vh;
     border-radius: 10px;
     padding: 20px;
-    display: block;
+    /* display: block; */
     justify-content: center;
     background-color: white;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     border-left: 7px solid rgb(25, 177, 228);
+   
 }
 
 .add_questions_container:last-child,
@@ -119,12 +255,14 @@ nav {
 }
 
 .form-group {
+
     padding: 5px;
     width: 83%;
     margin: auto;
 }
 
 .form-control ,.question{
+
     width: 100%;
     height: 6vh;
     box-sizing: border-box;
@@ -160,6 +298,7 @@ input[type='radio'] {
 
 .radio_answer {
     margin: 20px 16px 0 0;
+
 }
 .btn {
     padding: 10px 15px;
@@ -167,21 +306,22 @@ input[type='radio'] {
     outline: none;
     border: 0;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background: lightblue;
+    background: rgb(22, 98, 238);
     border-radius: 3px;
-    color: rgba(85, 26, 139, 1);
     margin-left: 72%;
     margin-bottom: 5%;
-    /* float: right; */
+}
+.submit {
+    margin-right: 40px;
 }
 
 .btn a {
     text-decoration: none;
+    color: #fff;
 }
 
 #btn_add_question {
     border-radius: 50%;
-    /* right: 70px; */
     position: fixed;
     right: 140px;
     bottom: 35%;
@@ -203,11 +343,20 @@ input[type='radio'] {
     margin: 13px 16px 0 0;
 }
 
-
-/* <!-- // ------------------------------------- End of Display Question ------------------------------------> */
-
-
-/* <!-- ------------------------------------ Start plying quiz ----------------------------------------- --> */
-
-
-/* <!-- ------------------------------------ Start plying quiz ----------------------------------------- --> */
+.alert{
+    background:  #fd938c;
+    width: 55.5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 15px;
+    border-radius: 6px;
+    font-size: large;
+    padding: 0 20px;
+    color: rgb(192, 1, 1);
+    cursor: pointer;
+}
+.alert i {
+    color: red;
+}
