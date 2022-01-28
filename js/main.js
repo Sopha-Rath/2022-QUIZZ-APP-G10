@@ -102,7 +102,6 @@ function display_question() {
     let Quizz_Title=document.getElementById('Quizz_Title').value;
     let form_description =document.getElementsByClassName('Form description').value;
     let alert = document.querySelector('.alert');
-
     if (question_input=== "" || Quizz_Title=== "" || form_description=== "" || display_answer_input() ) {
         alert.style.display = "flex"
     }else if (!(check_correct_answer())){
@@ -215,8 +214,7 @@ function show(item,isValid){
     }
 }
 
-// document.getElementById("btn_add_question").addEventListener("click", add_question)
-// document.getElementById("btn_save_question").addEventListener("click", display_question)
+
 //=============================================play Quiz====================================
 let is_click = false;
 function play_quiz() {
@@ -391,7 +389,6 @@ document.querySelector('.alert').style.display = "none";
 
 
 
-//---------------------------------------------- End add Question ----------------------------->
 
 
 
@@ -401,7 +398,6 @@ document.querySelector('.alert').style.display = "none";
 
 
 
-////////////////////////////////////////// Start Display Question ///////////////////////////////////////
 
 
 
@@ -478,139 +474,3 @@ document.querySelector('.alert').style.display = "none";
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ------------------------------------- End of Display Question ------------------------------------>
-
-
-
-
-
-
-
-
-
-/////////////////////////////////////////// Start playing quiz///////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//-------------------------------------------------- End of plying quiz     ----------------------------------------->
-
-//-------------------------------------------------- End of plying quiz     ----------------------------------------->
