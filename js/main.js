@@ -1,14 +1,15 @@
-////////////////          start Add Questions        ///////////////////////////////
-//Get value from input
+
+// ==============================function  to add question==================================
 let number_of_question = 0;
 function add_question() {
     let first_add=false;
     let question_input=document.getElementById('question').value;
     let form_description =document.getElementById('Form description').value;
+    let alert = document.querySelector('.alert')
     if (first_add == true && question_input==='' || form_description==='' || display_answer_input()) {
-         window.confirm('You must fill all inputs') 
+        alert.style.display = "flex"
     }else if (!(check_correct_answer())){
-        window.confirm('you need to check correct answer')
+        alert.style.display = "flex"
     }else{
         first_add=true;
         number_of_question += 1
@@ -59,7 +60,7 @@ function add_question() {
         }
     }
 };
-// -----------------------alert --------------------------------------------
+// =========================================validation input==================================
 let is_display_question = false;
 let answer_input=document.getElementsByClassName('form-control');
 function display_answer_input(){
@@ -70,7 +71,6 @@ function display_answer_input(){
     }
     return false;
 }
-// ---------------------------check_correct_answer---------------------------
 let radio=document.getElementsByClassName('radio_answer');
 function check_correct_answer(){
     let checked_number = 0;
@@ -88,20 +88,21 @@ function check_correct_answer(){
     console.log(checked_number)
     return is_check;
 }
+// =============================function to display question=====================================
 function display_question() {
     let question_input=document.getElementById('question').value;
     let Quizz_Title=document.getElementById('Quizz_Title').value;
     let form_description =document.getElementsByClassName('Form description').value;
-
+    let alert = document.querySelector('.alert');
     if (question_input=== "" || Quizz_Title=== "" || form_description=== "" || display_answer_input() ) {
-        window.confirm('You must fill all inputs')
+        alert.style.display = "flex"
     }else if (!(check_correct_answer())){
-        window.confirm('you need to check correct answer')
+        alert.style.display = "flex"
     
     }else{
         let show_new_question = get_question();
         let show_new_answers = get_answers('radio_answer');
-      
+        alert.style.display = "none"
         for (let q = 0; q < show_new_question.length; q++) {
             let quiz = document.getElementById("quizz")
         
@@ -156,7 +157,14 @@ function display_question() {
         is_display_submit = true;
     }
 }
-// ---------------------------get_the_question---------------------
+//=====================================function Close alert ==============================
+let close = document.querySelector(".close");
+let closeAlert = () =>{
+    let alert = document.querySelector('.alert')
+    alert.style.display = "none"
+}
+close.addEventListener('click', closeAlert)
+// ==========================================function get the question===========================
 function get_question() {
     let add_questions = document.querySelectorAll(".question");
     let new_questions = [];
@@ -165,7 +173,7 @@ function get_question() {
     }
     return new_questions
 }
-// ---------------------------get_the_answers----------------------
+// ===============================================get the answer===========================
 function get_answers(class_name) {
     let all_answers = document.getElementsByClassName(class_name)
     let new_answers = [];
@@ -188,7 +196,7 @@ function get_answers(class_name) {
     }
     return new_answers
 }
-// -------------------------show_and_hide---------------------------
+//===============================================show and hide==========================
 function show(item,isValid){
     if (isValid){
         item.style.display = "block";
@@ -199,12 +207,13 @@ function show(item,isValid){
 // -------------------------main_btn---------------------------------
 document.getElementById("btn_add_question").addEventListener("click", add_question)
 document.getElementById("btn_save_question").addEventListener("click", display_question)
-// -------------------------play Quiz--------------------------------
+// ====================================play Quiz=========================================
 let is_click = false;
 function play_quiz() {
+    let alert = document.querySelector('.alert')
     if (is_display_question === false) {
         if (is_click===false) {
-            window.confirm("You need to save before!")
+            alert.style.display = "flex"
         }
     }else { 
         let play_new_question = get_question();
@@ -259,10 +268,9 @@ function play_quiz() {
     }
 }
 
-// -----------------------------Show_the_result---------------------------
+// =============================show the result==================================================
 function show_result() {
     let score = 0
-    
     let old_answer = get_answers("radio_answer");
     let new_answer = get_answers("new_radio_answer")
     let max_scores = new_answer.length*10;
@@ -277,9 +285,10 @@ function show_result() {
     show_scores.style.fontSize = "20px"
     document.getElementById("btn_submit_question").style.display = "none";
 }
-//-------------------------- mains_button----------------------------------
+//==================================== mains button=================================================
 document.getElementById("quiz-btn").addEventListener("click", play_quiz);
 document.getElementById("btn_submit_question").style.display = "none";
+document.querySelector('.alert').style.display = "none";
 document.getElementById("btn_submit_question").addEventListener("click", show_result)
 
 

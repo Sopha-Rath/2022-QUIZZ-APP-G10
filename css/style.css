@@ -199,3 +199,20 @@ input[type='radio'] {
     margin: 13px 16px 0 0;
 }
 
+.alert{
+    background:  #fd938c;
+    width: 120vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 45vh;
+    margin-top: 15px;
+    border-radius: 6px;
+    font-size: large;
+    padding: 0 20px;
+    color: rgb(192, 1, 1);
+    
+}
+.alert i {
+    color: red;
+}
