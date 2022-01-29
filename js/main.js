@@ -1,3 +1,4 @@
+
 // =========================================show_menu========================================
 function show_menus() { 
     document.getElementById("header").style.display = "none";
@@ -10,9 +11,11 @@ function show_menus() {
 //======================================function to add question===========================================
 let number_of_question = 0;
 function add_question() {
+    
+    console.log(document.getElementsByClassName("remove"))
     let first_add=false;
     let question_input=document.getElementById('question').value;
-    let form_description =document.getElementById('Form description').value;
+    let form_description =document.getElementById('description').value;
     let alert = document.querySelector('.alert')
     if (first_add == true && question_input=== "" || form_description=== ""|| display_answer_input()) {
         alert.style.display = "flex"
@@ -27,10 +30,12 @@ function add_question() {
         add_questions_container.className = "add_questions_container";
         add_questions_container.setAttribute("id", "add_questions_container");
         quiz.appendChild(add_questions_container);
+
     
         let div_questions = document.createElement("div");
         div_questions.className = "questions";
         add_questions_container.appendChild(div_questions);
+
     
         let form_group = document.createElement("div");
         form_group.className = "form-group";
@@ -66,6 +71,10 @@ function add_question() {
             input_answer.placeholder = "Answer";
             form_group_answer.appendChild(input_answer);
         }
+        let remove_img = document.createElement("img");
+        remove_img.src = "image/remove.png"
+        remove_img.className = "remove";
+        add_questions_container.appendChild(remove_img)
     }
 };
 // =========================================validation input======================================
@@ -107,8 +116,7 @@ function display_question() {
     if (question_input=== "" || Quizz_Title=== "" || form_description=== "" || display_answer_input() ) {
         alert.style.display = "flex"
     }else if (!(check_correct_answer("radio_answer"))){
-        alert.style.display = "flex"
-    
+        alert.style.display = "flex";
     }else{
         let show_new_question = get_question();
         let show_new_answers = get_answers('radio_answer');
@@ -355,7 +363,22 @@ function edit(){
     document.getElementById("btn_add_question").style.display = "block";
     document.getElementById("score").style.display = "none";
 }
+function remove_question(event) {
+   
+    if (event.target.className == "remove") {
+      let container = event.target.parentElement;
+      my_quizz.removeChild(container);
+    }
+  }
 //============================================= mains button====================================
+
+// let remove_btns = document.getElementsByClassName("remove");
+// for (let btn of remove_btns){
+//     btn.addEventListener("click",remove_question);
+// }
+let my_quizz = document.querySelector("#quizz");
+my_quizz.addEventListener("click",remove_question)
+
 document.getElementById("quiz-btn").addEventListener("click", play_quiz);
 document.getElementById("btn_create").addEventListener("click", show_menus)
 document.getElementById("btn_submit_question").addEventListener("click", show_result)
@@ -367,174 +390,3 @@ document.getElementById("btn_submit_question").style.display = "none";
 document.getElementById("btn_save_question").style.display = "none";
 document.getElementById("btn_add_question").style.display = "none";
 document.querySelector('.alert').style.display = "none";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
