@@ -7,7 +7,6 @@ body {
     font-family: sans-serif;
 }
 
-
 /* ---------------------------------create_menu------------------------------------ */
 
 .header h1 {
@@ -20,7 +19,9 @@ body {
     font-family: cursive;
     text-shadow: 2px 2px grey;
 }
-
+.bg-img {
+    position: relative;
+}
 .img {
     display: flex;
     justify-content: center;
@@ -37,7 +38,19 @@ body {
     text-align: center;
     margin-top: 20px;
 }
-
+/* ---------------btn_back--------------------- */
+.btn_restart {
+    position: absolute;
+    margin-left: 30px;
+    margin-top: 70px;
+}
+#btn_back {
+    cursor: pointer;
+    position: fixed;
+}
+#btn_back:hover {
+    height: 10vh;
+}
 .button-82-pushable {
     display: flex;
     justify-content: center;
@@ -196,12 +209,6 @@ nav {
     color: rgb(105, 104, 104);
     margin-left: 100px;
 }
-
-
-/* -------------------------------end menu-------------------------------------- */
-
-
-/* <!-- //////////////// start Add Questions /////////////////////////////// --> */
 
 #quizz {
     display: none;
@@ -374,6 +381,10 @@ input[type='radio'] {
 }
 .remove {
     width: 30px;
-    width: 30px;
     margin-left: 95%;
+    cursor: pointer;
+}
+.remove:hover {
+    width: 32px;
+    height: 32px;
 }

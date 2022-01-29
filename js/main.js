@@ -6,6 +6,8 @@ function show_menus() {
     document.getElementById("quizz").style.display = "block";
     document.getElementById("btn_save_question").style.display = "block";
     document.getElementById("btn_add_question").style.display = "block";
+    document.getElementById("edit-btn").style.display = "block";
+    document.getElementById("quiz-btn").style.display = "block";
 }
 //======================================function to add question===========================================
 let number_of_question = 0;
@@ -287,6 +289,7 @@ function play_quiz() {
 }
 // =========================================Show the result====================================
 function show_result() {
+    document.getElementById("btn_back").style.display = "block";
     is_click = false;
     let alert = document.querySelector('.alert')
     if (!(check_correct_answer("new_radio_answer"))){
@@ -336,8 +339,9 @@ function show_result() {
                 all_new_radio[n].style.height = "25px";
             };  
         }
-    }
-}
+    }document.getElementById("edit-btn").style.display = "none";
+    document.getElementById("quiz-btn").style.display = "none";
+}   
 
 function edit(){
     is_click = false;
@@ -363,19 +367,25 @@ function remove_question(event) {
       let container = event.target.parentElement;
       my_quizz.removeChild(container);
     }
-  }
+}
+function restart() {
+    window.location.reload();
+}
 //============================================= mains button====================================
 let my_quizz = document.querySelector("#quizz");
 my_quizz.addEventListener("click",remove_question)
-
 document.getElementById("quiz-btn").addEventListener("click", play_quiz);
 document.getElementById("btn_create").addEventListener("click", show_menus)
-document.getElementById("btn_submit_question").addEventListener("click", show_result)
+document.getElementById("btn_submit_question").addEventListener("click", show_result);
 document.getElementById("btn_add_question").addEventListener("click", add_question)
 document.getElementById("btn_save_question").addEventListener("click", display_question)
-document.getElementById("edit-btn").addEventListener("click", edit)
+document.getElementById("edit-btn").addEventListener("click", edit);
+document.getElementById("btn_back").addEventListener("click", restart)
 // =============================================hide buttion=======================================
 document.getElementById("btn_submit_question").style.display = "none";
 document.getElementById("btn_save_question").style.display = "none";
 document.getElementById("btn_add_question").style.display = "none";
+document.getElementById("edit-btn").style.display = "none";
+document.getElementById("quiz-btn").style.display = "none";
 document.querySelector('.alert').style.display = "none";
+document.getElementById("btn_back").style.display = "none";
