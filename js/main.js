@@ -1,5 +1,6 @@
 // =========================================show_menu========================================
 function show_menus() { 
+    
     document.getElementById("header").style.display = "none";
     document.getElementById("img").style.display = "none";
     document.getElementById("btn_create").style.display = "none";
@@ -8,17 +9,18 @@ function show_menus() {
     document.getElementById("btn_add_question").style.display = "block";
     document.getElementById("edit-btn").style.display = "block";
     document.getElementById("quiz-btn").style.display = "block";
+    console.log(document.getElementsByClassName("remove"))
+
 }
 //======================================function to add question===========================================
 let number_of_question = 0;
 function add_question() {
-    
-    console.log(document.getElementsByClassName("remove"))
     let first_add=false;
+    
     let question_input=document.getElementById('question').value;
     let form_description =document.getElementById('description').value;
     let alert = document.querySelector('.alert')
-    if (first_add == true && question_input=== "" || form_description=== ""|| display_answer_input()) {
+    if (first_add == true && question_input=== "" || form_description=== ""|| display_answer_input() ) {
         alert.style.display = "flex"
     }else if (!(check_correct_answer("radio_answer"))){
         alert.style.display = "flex"
@@ -345,6 +347,7 @@ function show_result() {
 
 function edit(){
     is_click = false;
+    is_display_question = false;
     let edit_questons=document.querySelectorAll(".add_questions_container");
     for(let edit of edit_questons){
         show(edit,true);
@@ -360,6 +363,7 @@ function edit(){
     document.getElementById("btn_save_question").style.display = "block";
     document.getElementById("btn_add_question").style.display = "block";
     document.getElementById("score").style.display = "none";
+    document.getElementById("btn_submit_question").style.display = "none";
 }
 function remove_question(event) {
    
@@ -371,6 +375,7 @@ function remove_question(event) {
 function restart() {
     window.location.reload();
 }
+
 //============================================= mains button====================================
 let my_quizz = document.querySelector("#quizz");
 my_quizz.addEventListener("click",remove_question)
