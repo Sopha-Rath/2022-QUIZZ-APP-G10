@@ -16,7 +16,7 @@ function add_question() {
     let alert = document.querySelector('.alert')
     if (first_add == true && question_input=== "" || form_description=== ""|| display_answer_input()) {
         alert.style.display = "flex"
-    }else if (!(check_correct_answer())){
+    }else if (!(check_correct_answer("radio_answer"))){
         alert.style.display = "flex"
     }else{
         first_add=true;
@@ -79,8 +79,9 @@ function display_answer_input(){
     }
     return false;
 }
-let radio=document.getElementsByClassName('radio_answer');
-function check_correct_answer(){
+
+function check_correct_answer(answer_name){
+    let radio=document.getElementsByClassName(answer_name);
     let checked_number = 0;
     let is_check = false;
     let num_0f_q = get_question().length;
@@ -98,13 +99,14 @@ function check_correct_answer(){
 }
 //========================================display question==================================================
 function display_question() {
+    is_click = false;
     let question_input=document.getElementById('question').value;
     let Quizz_Title=document.getElementById('Quizz_Title').value;
     let form_description =document.getElementsByClassName('Form description').value;
     let alert = document.querySelector('.alert');
     if (question_input=== "" || Quizz_Title=== "" || form_description=== "" || display_answer_input() ) {
         alert.style.display = "flex"
-    }else if (!(check_correct_answer())){
+    }else if (!(check_correct_answer("radio_answer"))){
         alert.style.display = "flex"
     
     }else{
@@ -166,6 +168,9 @@ function display_question() {
         is_display_question = true;
         is_display_submit = true;
     }
+    console.log(document.getElementsByClassName("add_questions_container"))
+    console.log(document.getElementsByClassName("play_questions_container"))
+
 }
 //=====================================function Close alert ==============================
 let close = document.querySelector(".close");
@@ -214,7 +219,6 @@ function show(item,isValid){
         item.style.display = "none";
     }
 }
-
 
 //=============================================play Quiz====================================
 let is_click = false;
@@ -277,57 +281,79 @@ function play_quiz() {
 }
 // =========================================Show the result====================================
 function show_result() {
-    let score = 0
-    
-    let old_answer = get_answers("radio_answer");
-    let new_answer = get_answers("new_radio_answer")
-    
-    let max_scores = new_answer.length*10;
-    for (obj in new_answer){
-        if (old_answer[obj]["correct"] === new_answer[obj]["correct"] && new_answer[obj]["correct"]!=0){
-            score += 10
+    is_click = false;
+    let alert = document.querySelector('.alert')
+    if (!(check_correct_answer("new_radio_answer"))){
+        alert.style.display = "flex"
+    } else {
+        let score = 0
+        
+        let old_answer = get_answers("radio_answer");
+        let new_answer = get_answers("new_radio_answer")
+        
+        let max_scores = new_answer.length*10;
+        for (obj in new_answer){
+            if (old_answer[obj]["correct"] === new_answer[obj]["correct"] && new_answer[obj]["correct"]!=0){
+                score += 10
+            }
+        }  
+        document.getElementById("score").style.display = "block" ;
+        let show_scores = document.getElementById("score");
+        show_scores.textContent = "Total scores: " + score + " / " + max_scores;
+        show_scores.style.fontSize = "20px"
+        document.getElementById("btn_submit_question").style.display = "none";
+        let play_answers = document.getElementsByClassName("play_answers_container");
+        for (play of play_answers){
+            play.style.display = "none";
         }
-    }  
-    document.getElementById("score").style.display = "block" ;
-    let show_scores = document.getElementById("score");
-    show_scores.textContent = "Total scores: " + score + " / " + max_scores;
-    show_scores.style.fontSize = "20px"
-    document.getElementById("btn_submit_question").style.display = "none";
-    let play_answers = document.getElementsByClassName("play_answers_container");
-    for (play of play_answers){
-        play.style.display = "none";
-    }
-    let show_questions=document.querySelectorAll(".show_question_container");
-    for(let  show of show_questions){
-        show.style.display = "block";
-    }
-    let play_radio = document.getElementsByClassName("new_radio_answer");
-    let old_radio = document.getElementsByClassName("radio_answer");
-    
-    let all_new_radio = document.getElementsByClassName("new-radio-answer");
-    for (let n in all_new_radio){
-        if (play_radio[n].checked){
-            
+        let show_questions=document.querySelectorAll(".show_question_container");
+        for(let  show of show_questions){
+            show.style.display = "block";
+        }
+        let play_radio = document.getElementsByClassName("new_radio_answer");
+        let old_radio = document.getElementsByClassName("radio_answer");
+        
+        let all_new_radio = document.getElementsByClassName("new-radio-answer");
+        for (let n in all_new_radio){
+            if (play_radio[n].checked){
+                if (!(old_radio[n].checked)){
+                    all_new_radio[n].style.backgroundImage = "url('image/wrong.png')"
+                    all_new_radio[n].style.border = "none";
+                    all_new_radio[n].style.width = "26px";
+                    all_new_radio[n].style.height = "25px";
+                }
+            }
             if (old_radio[n].checked){
                 all_new_radio[n].style.backgroundImage = "url('image/images.png')";
                 all_new_radio[n].style.border = "none";
+                all_new_radio[n].style.width = "26px";
+                all_new_radio[n].style.height = "25px";
 
-            } else {
-                all_new_radio[n].style.backgroundImage = "url('image/wrong.png')"
-                all_new_radio[n].style.border = "none";
 
+                // all_new_radio[n].style.display = "none";
+            };
                 
-            }
         }
-        if (old_radio[n].checked){
-            all_new_radio[n].style.backgroundImage = "url('image/images.png')";
-            all_new_radio[n].style.border = "none";
-
-
-            // all_new_radio[n].style.display = "none";
-        };
-            
     }
+}
+
+function edit(){
+    is_click = false;
+    let edit_questons=document.querySelectorAll(".add_questions_container");
+    for(let edit of edit_questons){
+        show(edit,true);
+    }
+    let play_questons = document.querySelectorAll(".play_answers_container");
+    for(let plays of play_questons){
+        plays.remove();
+    }
+    let show_questons = document.querySelectorAll(".show_question_container");
+    for(let shows of show_questons){
+        shows.remove();
+    }
+    document.getElementById("btn_save_question").style.display = "block";
+    document.getElementById("btn_add_question").style.display = "block";
+    document.getElementById("score").style.display = "none";
 }
 //============================================= mains button====================================
 document.getElementById("quiz-btn").addEventListener("click", play_quiz);
@@ -335,6 +361,7 @@ document.getElementById("btn_create").addEventListener("click", show_menus)
 document.getElementById("btn_submit_question").addEventListener("click", show_result)
 document.getElementById("btn_add_question").addEventListener("click", add_question)
 document.getElementById("btn_save_question").addEventListener("click", display_question)
+document.getElementById("edit-btn").addEventListener("click", edit)
 // =============================================hide buttion=======================================
 document.getElementById("btn_submit_question").style.display = "none";
 document.getElementById("btn_save_question").style.display = "none";
