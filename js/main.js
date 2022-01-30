@@ -298,8 +298,7 @@ function play_quiz() {
 }
 // =========================================Show the result====================================
 function show_result() {
-    document.getElementById("btn_back").style.display = "block";
-    document.getElementById("quiz-btn").style.backgroundColor = "blue";
+
     is_click = false;
     let alert = document.querySelector('.alert')
     if (!(check_correct_answer("new_radio_answer"))){
@@ -349,8 +348,11 @@ function show_result() {
                 all_new_radio[n].style.height = "25px";
             };  
         }
+        h1.textContent="SEE YOUR RESULT";
+        document.getElementById("btn_back").style.display = "block";
+        document.getElementById("quiz-btn").style.backgroundColor = "blue";
+        document.getElementById("description").style.display = "none";
     }
-    h1.textContent="SEE YOUR RESULT";
 
 }   
 
