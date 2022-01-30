@@ -12,19 +12,18 @@ function show_menus() {
 //======================================function to add question===========================================
 let number_of_question = 0;
 function add_question() {
-    
-    console.log(document.getElementsByClassName("remove"))
+    console.log(document.getElementsByClassName("remove"));
     let first_add=false;
-    let question_input=document.getElementById('question').value;
+    let question_input=document.getElementById('question');
     let form_description =document.getElementById('description').value;
-    let alert = document.querySelector('.alert')
+    let alert = document.querySelector('.alert');
     if (first_add == true && question_input=== "" || form_description=== ""|| display_answer_input()) {
         alert.style.display = "flex"
     }else if (!(check_correct_answer("radio_answer"))){
         alert.style.display = "flex"
     }else{
         first_add=true;
-        number_of_question += 1
+        number_of_question += 1;
     
         let quiz = document.getElementById("quizz")
         let add_questions_container = document.createElement("div");
@@ -77,7 +76,7 @@ function add_question() {
         remove_img.className = "remove";
         add_questions_container.appendChild(remove_img)
     }
-};
+}
 // =========================================validation input======================================
 let is_display_question = false;
 let answer_input=document.getElementsByClassName('form-control');
@@ -110,7 +109,7 @@ function check_correct_answer(answer_name){
 //========================================display question==================================================
 function display_question() {
     is_click = false;
-    let question_input=document.getElementById('question').value;
+    let question_input=document.getElementById('question');
     let Quizz_Title=document.getElementById('Quizz_Title').value;
     let form_description =document.getElementsByClassName('Form description').value;
     let alert = document.querySelector('.alert');
@@ -360,9 +359,9 @@ function edit(){
     document.getElementById("btn_save_question").style.display = "block";
     document.getElementById("btn_add_question").style.display = "block";
     document.getElementById("score").style.display = "none";
+
 }
 function remove_question(event) {
-   
     if (event.target.className == "remove") {
       let container = event.target.parentElement;
       my_quizz.removeChild(container);
