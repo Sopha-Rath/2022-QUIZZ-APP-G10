@@ -1,5 +1,4 @@
 /* -------------------------------start menu-------------------------------------- */
-
 body {
     margin: 0;
     padding: 0;
@@ -51,6 +50,7 @@ body {
 #btn_back:hover {
     height: 10vh;
 }
+
 .button-82-pushable {
     display: flex;
     justify-content: center;
@@ -323,7 +323,7 @@ input[type='radio'] {
     color: #fff;
 }
 
-#score {
+#score,#btn_submit_question,#btn_save_question,#btn_add_question,#edit-btn,#quiz-btn,.alert,#btn_back {
     display: none;
 }
 
@@ -388,3 +388,88 @@ input[type='radio'] {
     width: 32px;
     height: 32px;
 }
+#start {
+    margin-right: 25%;
+    margin-top: 4%;
+    color: #EFEBF9;
+   padding: 10px 25px;
+    font-size: 23px;
+    
+}
+@media(max-width: 600px) {
+    body {
+      background-color: lightblue;
+    }
+    .logo img {
+        width: 48%;
+        height: 68px;
+        margin-top: 5px;
+    } 
+    .logo h1 {
+        display: none;
+    }
+    .container {
+        height: 13vh;
+    }
+    .header h1 {
+        font-size: 25px;
+    }
+    .create {
+        padding: 10px;
+    }
+    .img #img {
+        width: 70%;
+    }
+    .group-btn {
+        display: flex;
+        width: 100%;
+        margin-top: 10px;
+    }
+    #quiz-btn, #edit-btn {
+        height: 6vh;
+        /* width: 100%; */
+        font-size: 20px;
+    }
+    #edit-btn {
+        margin-right: 10px;
+    }
+    .quizz_title {
+        width: 89%;
+    }
+    .add_questions_container, .show_question_container,.play_questions_container {
+        width: 78%;
+    }
+    #btn_add_question {
+        width: 50px;
+        height: 50px;
+        margin-right: -30%;
+    }
+    #btn_add_question a {
+        display: flex;
+        justify-content: center;
+        font-size: 30px;
+    }
+    #save {
+        margin-left: 25px;
+    }
+    .alert {
+        width: 80%;
+        height: 12vh;
+    }
+    #btn_save_question ,#btn_submit_question{
+        height: 7vh;
+        font-size: 23px;
+    }
+    #btn_submit_question{
+        margin-left: 77%;
+    }
+    .btn_restart img {
+        /* height: 20vh; */
+        width: 10%;
+        top: 100px;
+        margin-left: -5%;
+    }
+    .new-radio-answer{
+        width: 10%;
+    }
+  }
