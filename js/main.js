@@ -172,11 +172,24 @@ function display_question() {
             }
             document.getElementById("btn_add_question").style.display="none";
             document.getElementById("btn_save_question").style.display="none";
+ 
         } 
+        let display_answer = document.getElementsByClassName("new-radio-answer");
+        let radio = document.getElementsByClassName("radio_answer");
+        for(let m in radio){
+            
+            if (radio[m].checked){
+                display_answer[m].style.backgroundImage = "url('image/images.png')";
+                display_answer[m].style.border = "none";
+                display_answer[m].style.width = "26px";
+                display_answer[m].style.height = "25px";
+            };  
+        }
         let hide_questons=document.querySelectorAll(".add_questions_container");
         for(let hide of hide_questons){
             show(hide,false)
         }
+
         show(document.getElementById("btn_add_question"),false)
         show(document.getElementById("btn_save_question"),false)
         document.getElementById("edit-btn").style.backgroundColor = "blue";
