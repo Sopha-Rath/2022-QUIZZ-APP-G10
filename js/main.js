@@ -1,6 +1,9 @@
+let quiz = document.getElementById("quizz")
+let h1 = document.querySelector("h1");
+console.log(h1)
 // =========================================show_menu========================================
 function show_menus() { 
-    
+    h1.textContent = "CREAT NEW QUIZ";
     document.getElementById("header").style.display = "none";
     document.getElementById("img").style.display = "none";
     document.getElementById("btn_create").style.display = "none";
@@ -16,7 +19,6 @@ function show_menus() {
 let number_of_question = 0;
 function add_question() {
     let first_add=false;
-    
     let question_input=document.getElementById('question').value;
     let form_description =document.getElementById('description').value;
     let alert = document.querySelector('.alert')
@@ -25,10 +27,10 @@ function add_question() {
     }else if (!(check_correct_answer("radio_answer"))){
         alert.style.display = "flex"
     }else{
+        
         first_add=true;
         number_of_question += 1
-    
-        let quiz = document.getElementById("quizz")
+     
         let add_questions_container = document.createElement("div");
         add_questions_container.className = "add_questions_container";
         add_questions_container.setAttribute("id", "add_questions_container");
@@ -112,9 +114,10 @@ function check_correct_answer(answer_name){
 //========================================display question==================================================
 function display_question() {
     is_click = false;
+    h1.textContent="SEE ALL QUESTIONS";
     let question_input=document.getElementById('question').value;
     let Quizz_Title=document.getElementById('Quizz_Title').value;
-    let form_description =document.getElementsByClassName('Form description').value;
+    let form_description =document.getElementsByClassName('description').value;
     let alert = document.querySelector('.alert');
     if (question_input=== "" || Quizz_Title=== "" || form_description=== "" || display_answer_input() ) {
         alert.style.display = "flex"
@@ -126,7 +129,6 @@ function display_question() {
         alert.style.display = "none"
       
         for (let q = 0; q < show_new_question.length; q++) {
-            let quiz = document.getElementById("quizz")
         
             let show_questions_container = document.createElement("div");
             show_questions_container.className = "show_question_container";
@@ -176,12 +178,11 @@ function display_question() {
         }
         show(document.getElementById("btn_add_question"),false)
         show(document.getElementById("btn_save_question"),false)
-        is_display_question = true;
-        is_display_submit = true;
-    }
-    console.log(document.getElementsByClassName("add_questions_container"))
-    console.log(document.getElementsByClassName("play_questions_container"))
+        document.getElementById("edit-btn").style.backgroundColor = "blue";
+        
 
+        is_display_question = true;
+    }
 }
 //=====================================function Close alert ==============================
 let close = document.querySelector(".close");
@@ -233,6 +234,9 @@ function show(item,isValid){
 //=============================================play Quiz====================================
 let is_click = false;
 function play_quiz() {
+    h1.textContent="PLAY QUIZ";
+    document.getElementById("edit-btn").style.backgroundColor = "blue";
+    document.getElementById("quiz-btn").style.backgroundColor = "darkblue";
     let alert = document.querySelector('.alert')
     if (is_display_question === false) {
         if (is_click===false) {
@@ -246,8 +250,8 @@ function play_quiz() {
         for (let l = 0; l < play_new_question.length; l++) {
             number_of_question += 1
             let play_questions_container = document.createElement("div");
-            play_questions_container.className = "play_answers_container";
-            document.getElementById("quizz").appendChild(play_questions_container);
+            play_questions_container.className = "play_questions_container";
+            quiz.appendChild(play_questions_container);
 
             let play_questions = document.createElement("div");
             play_questions.className = "questions";
@@ -292,6 +296,7 @@ function play_quiz() {
 // =========================================Show the result====================================
 function show_result() {
     document.getElementById("btn_back").style.display = "block";
+    document.getElementById("quiz-btn").style.backgroundColor = "blue";
     is_click = false;
     let alert = document.querySelector('.alert')
     if (!(check_correct_answer("new_radio_answer"))){
@@ -313,7 +318,7 @@ function show_result() {
         show_scores.textContent = "Total scores: " + score + " / " + max_scores;
         show_scores.style.fontSize = "20px"
         document.getElementById("btn_submit_question").style.display = "none";
-        let play_answers = document.getElementsByClassName("play_answers_container");
+        let play_answers = document.getElementsByClassName("play_questions_container");
         for (play of play_answers){
             play.style.display = "none";
         }
@@ -341,18 +346,23 @@ function show_result() {
                 all_new_radio[n].style.height = "25px";
             };  
         }
-    }document.getElementById("edit-btn").style.display = "none";
-    document.getElementById("quiz-btn").style.display = "none";
+    }
+    h1.textContent="SEE YOUR RESULT";
+
 }   
 
 function edit(){
+    document.getElementById("btn_back").style.display = "none";
+    h1.textContent="EDIT QUESTIONS";
+    document.getElementById("edit-btn").style.backgroundColor = "darkblue";
+    document.getElementById("quiz-btn").style.backgroundColor = "blue";
     is_click = false;
     is_display_question = false;
     let edit_questons=document.querySelectorAll(".add_questions_container");
     for(let edit of edit_questons){
         show(edit,true);
     }
-    let play_questons = document.querySelectorAll(".play_answers_container");
+    let play_questons = document.querySelectorAll(".play_questions_container");
     for(let plays of play_questons){
         plays.remove();
     }
@@ -366,10 +376,9 @@ function edit(){
     document.getElementById("btn_submit_question").style.display = "none";
 }
 function remove_question(event) {
-   
     if (event.target.className == "remove") {
-      let container = event.target.parentElement;
-      my_quizz.removeChild(container);
+      let container = event.target.parentElement;s
+      quiz.removeChild(container);
     }
 }
 function restart() {
@@ -377,11 +386,12 @@ function restart() {
 }
 
 //============================================= mains button====================================
-let my_quizz = document.querySelector("#quizz");
-my_quizz.addEventListener("click",remove_question)
+
+quiz.addEventListener("click",remove_question)
 document.getElementById("quiz-btn").addEventListener("click", play_quiz);
 document.getElementById("btn_create").addEventListener("click", show_menus)
 document.getElementById("btn_submit_question").addEventListener("click", show_result);
+
 document.getElementById("btn_add_question").addEventListener("click", add_question)
 document.getElementById("btn_save_question").addEventListener("click", display_question)
 document.getElementById("edit-btn").addEventListener("click", edit);

@@ -206,7 +206,7 @@ nav {
     align-items: center;
     font-weight: 700;
     font-size: 2rem;
-    color: rgb(105, 104, 104);
+    color: rgb(34, 33, 33);
     margin-left: 100px;
 }
 
@@ -238,7 +238,7 @@ nav {
 
 .add_questions_container,
 .show_question_container,
-.play_answers_container {
+.play_questions_container {
     width: 55%;
     margin: auto;
     margin-top: 3vh;
@@ -252,7 +252,7 @@ nav {
 
 .add_questions_container:last-child,
 .add_answers_container:last-child,
-.play_answers_container:last-child,
+.play_questions_container:last-child,
 .show_question_container:last-child {
     margin-bottom: 3%;
 }
